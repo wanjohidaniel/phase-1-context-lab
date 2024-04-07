@@ -1,4 +1,32 @@
 /* Your Code Here */
+function createEmployeeRecord(arr) {
+    return {
+      firstName: arr[0],
+      familyName: arr[1],
+      title: arr[2],
+      payPerHour: arr[3],
+      timeInEvents: [],
+      timeOutEvents: []
+    };
+  }
+  
+  function createEmployeeRecords(arr) {
+    return arr.map(createEmployeeRecord);
+  }
+  
+
+  function hoursWorkedOnDate(employee, date) {
+    const timeIn = employee.timeInEvents.find(event => event.date === date).hour;
+    const timeOut = employee.timeOutEvents.find(event => event.date === date).hour;
+    return (timeOut - timeIn) / 100;
+  }
+  
+  function wagesEarnedOnDate(employee, date) {
+    const hoursWorked = hoursWorkedOnDate(employee, date);
+    return hoursWorked * employee.payPerHour;
+  }
+
+ 
 
 /*
  We're giving you this function. Take a look at it, you might see some usage
